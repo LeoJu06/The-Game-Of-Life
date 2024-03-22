@@ -19,4 +19,4 @@ Unsere Grundidee ist es, eine Eigenimplementierung von "The Game Of Life" zu ers
 ---
 
 ##Referenzen:
-- [Das Spiel des Lebens | Mathewelten | ARTE](https://www.youtube.com/watch?v=ZV9AysUDjDk)
+- [Das Spiel des Lebens | Mathewelten | ARTE] https://www.youtube.com/watch?v=DUfdBdrK2ag (Test)
