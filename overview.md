@@ -14,9 +14,9 @@ Unsere Grundidee ist es, eine Eigenimplementierung von "The Game Of Life" zu ers
 - GitKraken für leichtere Bedienung 
 - Verwendung von VS Code als Editor und Processing-Umgebung zur Ausführung
 
-
+Hallo Laurids:)
 
 ---
 
-##Referenzen:
+## Referenzen:
 - [Das Spiel des Lebens | Mathewelten | ARTE] https://www.youtube.com/watch?v=DUfdBdrK2ag (Test)
