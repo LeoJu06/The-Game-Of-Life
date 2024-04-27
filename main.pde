@@ -1,0 +1,18 @@
+
+void main(){
+       
+    // Every important function will be called here
+    
+    println("Start of programm...");
+
+    show_start_page();
+
+    println("End of programm");
+}
+
+// Setup is necessary to call the main function
+void setup(){
+  
+  main();
+ 
+}
