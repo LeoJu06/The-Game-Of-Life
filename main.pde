@@ -5,14 +5,14 @@ void main(){
     
     println("Start of programm...");
 
-    show_start_page();
+    show_starter_page();
 
     println("End of programm");
 }
 
+
+
 // Setup is necessary to call the main function
 void setup(){
-  
   main();
- 
 }
