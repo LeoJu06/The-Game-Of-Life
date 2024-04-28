@@ -6,14 +6,15 @@
 
 class Config{
   
-  int WinWidth = 800;
-  int WinHeight = 800;
+  int winWidth = 800;
+  int winHeight = 800;
 
-  int cell_width = 8;
-  int cell_height = 8;
+  int cellWidth = 8;
+  int cellHeight = 8;
   
-  int maxWidth = 800;
- int maxHeight = 800;
+  int nXCells = winWidth / cellWidth;
+  int nYCells = winHeight / cellHeight;
+ 
   
   
 }
