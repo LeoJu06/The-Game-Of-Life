@@ -1,6 +1,6 @@
 
 
-
+// Function to draw a grid on the screen
 void drawGrid() {
 
   for (int x = 0; x < config.winWidth; x+=config.cellWidth) {

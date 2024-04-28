@@ -42,7 +42,8 @@ Kurzgesagt Videos Wichitg - Orientierung am Aussehen ihrer Zellen. YT-Videos sch
 - Game
     - funktion zum Zeichnen des Grids
     - summe berechnen der Felder
-    Anwendung der Regeln
+    - Anwendung der Regeln
+    - 
 ---
 
 ## Referenzen:

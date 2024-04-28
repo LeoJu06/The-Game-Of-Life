@@ -1,13 +1,12 @@
 
+// Single config object
+// Every other file needs to have access on it
+// So make it global
+
 Config config = new Config();
 
-// test object for further tests
-//Cell c1 = new Cell(0, 0);
+// Global 2D-Array which contains all cells
 Cell[][] cells = createCells();
-
-
-
-
 
 void setup() {
 
@@ -16,18 +15,21 @@ void setup() {
   
   println("Start of Programm");
   
-  // Test calls below 
-  activateRandomCells(69);
+  // Test calls 
+  activateRandomCells(config.amountCells);
   drawLivingCells();
-  
+
+  // Calling the main function
+  // Head of the programm
+  // Exe
   main();
   
-
   println("End of Programm");
 }
 
 void main() {
- 
+
+  // Andrin will fill this up
   //show_starter_page();
   drawGrid();
 }

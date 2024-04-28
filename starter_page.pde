@@ -1,8 +1,7 @@
 
-// Andrin
 
-
+// Andrin will fill this up
 void show_starter_page(){
 
-    println("Start page should be visible");
+    println("Starter page should be visible");
 }
