@@ -1,7 +1,7 @@
 
 
 
-void show_start_page(){
+void show_starter_page(){
 
     println("Start page should be visible");
 }

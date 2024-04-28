@@ -39,6 +39,10 @@ Kurzgesagt Videos Wichitg - Orientierung am Aussehen ihrer Zellen. YT-Videos sch
 - Start page => Zeigt die erste Page
     - 2 Knöpfe
     ...
+- Game
+    - funktion zum Zeichnen des Grids
+    - summe berechnen der Felder
+    Anwendung der Regeln
 ---
 
 ## Referenzen:

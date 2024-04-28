@@ -1,18 +1,18 @@
 
-void main(){
-       
-    // Every important function will be called here
-    
-    println("Start of programm...");
+Config config = new Config();
 
-    show_starter_page();
+void setup() {
 
-    println("End of programm");
+  //fullScreen();
+  size(800, 800);
+  
+  println("Start of Programm");
+  main();
+  println("End of Programm");
 }
 
-
-
-// Setup is necessary to call the main function
-void setup(){
-  main();
+void main() {
+ 
+  //show_starter_page();
+  drawGrid();
 }
