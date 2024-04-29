@@ -24,6 +24,8 @@ void setup() {
   // Exe
   main();
   
+  cells[0][0].calculateNeighbours();
+  
   println("End of Programm");
 }
 
