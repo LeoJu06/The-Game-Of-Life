@@ -7,6 +7,10 @@ Config config = new Config();
 // Global 2D-Array which contains all cells
 Cell[][] cells;
 
+// Global 2D-Array which contains copies of the cells
+// Changes will first be done at the copy of cell 
+Cell[][] cellsCopy;
+
 void setup() {
   
    println("Start of Programm");
@@ -15,6 +19,7 @@ void setup() {
   size(800, 800);
   
   cells = createCells();
+  cellsCopy = createCells();
   
   activateRandomCells(config.amountCells);
 
@@ -42,10 +47,12 @@ void main() {
   drawGrid();
   play();
   drawLivingCells();
-  delay(1);
+  delay(500);
 }
 
 void draw(){
+  background(255);
   main();
+  println("drawLiving Cells function should be called");
   drawLivingCells();
 }

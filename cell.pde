@@ -79,8 +79,6 @@ class Cell {
        // println(" " + a + " " + b + " "); 
         
         
-       
-
         // Saving the Coordinates in the position Array
         positions[arrayPosition][0] = a;
         positions[arrayPosition][1] = b;
@@ -105,7 +103,6 @@ class Cell {
       int x = coordinate[0];
       int y = coordinate[1];
 
-
       // If the cell is alive, add 1 to the total,
 
       //println("Cell " + xPos+ " " + yPos + " Neighbours are: " + x +" "+ y);
@@ -113,7 +110,6 @@ class Cell {
         total += 1;
       }
     }
-
 
     // Simply return the total
     return total;
@@ -157,9 +153,9 @@ void drawLivingCells() {
       // If the cell is alive, colorize it
       if (cells[x][y].isAlive()) {
         
-        println("Cell" + x +" "+ y+ " is living"  );
+        //println("Cell " + x +" "+ y + " is living (drawLivingCells function)"  );
 
-        fill(round(random(255)), round(random(255)), round(random(255)));
+        fill(0, int(0), 0);
         rect(x*config.cellWidth, y*config.cellHeight, config.cellWidth, config.cellHeight);
       }
     }
@@ -169,8 +165,31 @@ void drawLivingCells() {
 // Revive n random cells
 void activateRandomCells(int n) {
   for (int i=0; i<n; i++) {
-    println("Cell  " + i + " of n was activated");
-    cells[int(random(config.nXCells))][int(random(config.nYCells))].comesAlive();
+    println("Cell  " + i + " of " + n + " was activated");
+    //delay(1000);
     
+    int x = int(random(config.nXCells));
+    int y = int(random(config.nYCells));
+    
+    cells[x][y].comesAlive();
+    cellsCopy[x][y].comesAlive();
+    println("Cell is alive:");
+    println(cellsCopy[x][y].isAlive());
+    
+  }
+}
+
+void applyCellChanges(){
+
+  for (int x=0; x<config.nXCells; x++) {
+    for (int y=0; y<config.nYCells; y++) {
+
+      if (cellsCopy[x][y].isAlive()){
+        cells[x][y].comesAlive();
+
+      }else{
+        cells[x][y].dies();
+      }    
+    }
   }
 }

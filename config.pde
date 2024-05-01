@@ -14,9 +14,10 @@ class Config {
   int cellHeight = 8;
 
   // Amount of Cells in X and Y direction
+  // Like size of the grid or playground
   int nXCells = winWidth / cellWidth;
   int nYCells = winHeight / cellHeight;
 
   // Amount of start cells on the grid
-  int amountCells = 1500;
+  int amountCells = 5000;
 }

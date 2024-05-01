@@ -5,19 +5,25 @@ void play(){
     for (int y = 0; y < config.nYCells; y++) {
 
       if (cells[x][y].isAlive()) {
+         //println("Cell " + x +" "+ y + " is living (play function)"  );
         
         int total = cells[x][y].neighbourTotal(cells);
         
         if ((total < 2) || (total > 3)){
-          cells[x][y].dies();
+          cellsCopy[x][y].dies();
+          println("Cell " + x + y + " dies");
+          
+          //delay(5000);
         } else {
-          // Wenn die Zelle lebt oder neu geboren wird, wird sie markiert
-          // Hier sollte die Bedingung stehen, unabhängig davon, ob die Zelle bereits lebt
+        
           if (total == 3) {
-            cells[x][y].comesAlive();
+            cellsCopy[x][y].comesAlive();
+            println("Cell " + x + y + " comes alive");
           }
         }
       }
     }
   }
+  
+  applyCellChanges();
 }
