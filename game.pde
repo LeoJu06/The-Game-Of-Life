@@ -7,6 +7,7 @@ void play(){
       if (cells[x][y].isAlive()) {
          //println("Cell " + x +" "+ y + " is living (play function)"  );
         
+        // Calculat the total of the neighbour cells
         int total = cells[x][y].neighbourTotal(cells);
         
         if ((total < 2) || (total > 3)){

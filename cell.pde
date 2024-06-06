@@ -83,8 +83,7 @@ class Cell {
         positions[arrayPosition][0] = a;
         positions[arrayPosition][1] = b;
         arrayPosition++;
-      }
-      
+      } 
     }
    // println();
     return positions;
@@ -116,7 +115,6 @@ class Cell {
   }
 }
 
-
 // Function to fill an array with the needed amount of cells
 // Amount is defined with the given config values
 Cell[][] createCells() {
@@ -128,7 +126,6 @@ Cell[][] createCells() {
 
   for (int x=0; x<config.nXCells; x++) {
     for (int y=0; y<config.nYCells; y++) {
-
 
       // Create new Cell object
       Cell c = new Cell(x, y);
@@ -144,7 +141,6 @@ Cell[][] createCells() {
   return cells;
 }
 
-
 void drawLivingCells() {
 
   for (int x=0; x<config.nXCells; x++) {
@@ -155,7 +151,7 @@ void drawLivingCells() {
         
         //println("Cell " + x +" "+ y + " is living (drawLivingCells function)"  );
 
-        fill(0, int(0), 0);
+        fill(0, 0, 0);
         rect(x*config.cellWidth, y*config.cellHeight, config.cellWidth, config.cellHeight);
       }
     }
@@ -168,9 +164,11 @@ void activateRandomCells(int n) {
     println("Cell  " + i + " of " + n + " was activated");
     //delay(1000);
     
+    // Generate coordinates of a random cell
     int x = int(random(config.nXCells));
     int y = int(random(config.nYCells));
     
+    // Revive it (also its corresponding partner in the holding copy array)
     cells[x][y].comesAlive();
     cellsCopy[x][y].comesAlive();
     println("Cell is alive:");
@@ -179,11 +177,14 @@ void activateRandomCells(int n) {
   }
 }
 
+// After one iteration of the game this fuction applys the changes back on the original array
 void applyCellChanges(){
 
+  // Loop over all cells 
   for (int x=0; x<config.nXCells; x++) {
     for (int y=0; y<config.nYCells; y++) {
 
+      // Simply make them similar
       if (cellsCopy[x][y].isAlive()){
         cells[x][y].comesAlive();
 

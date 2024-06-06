@@ -8,14 +8,16 @@ Config config = new Config();
 Cell[][] cells;
 
 // Global 2D-Array which contains copies of the cells
-// Changes will first be done at the copy of cell 
+// Changes will first be applied at the copy of cell 
 Cell[][] cellsCopy;
+
+
 
 void setup() {
   
    println("Start of Programm");
 
-  //fullScreen();
+  // fullScreen();
   size(800, 800);
   
   cells = createCells();
@@ -44,6 +46,7 @@ void main() {
 
   // Andrin will fill this up
   //show_starter_page();
+  background(255);
   drawGrid();
   play();
   drawLivingCells();
@@ -51,8 +54,5 @@ void main() {
 }
 
 void draw(){
-  background(255);
   main();
-  println("drawLiving Cells function should be called");
-  drawLivingCells();
 }
