@@ -1,4 +1,3 @@
-
 // Represents a cell on the board
 class Cell {
 
@@ -12,7 +11,6 @@ class Cell {
   int[][] positions = new int[8][2];
 
   Cell(int x, int y) {
-
     // Position of a cell (later on it's place in the holding cells array)
     xPos = x;
     yPos = y;
@@ -34,77 +32,39 @@ class Cell {
   }
 
   int[][] calculateNeighbours() {
-    
-    // println("Cell "+xPos + " " + yPos + " " + "got neighbours at");
-
-    // This values represent the neighbours coordinates
-    int a=69;
-    int b=69;
-
-    // Counter which will increment and represents an array position between 0 and 8
     int arrayPosition = 0;
 
     // loop over all possible neighbour configurations
-    for (int i=xPos-1; i<=xPos+1; i++ ) {
-      for (int j=yPos-1; j<=yPos+1; j++) {
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        // Skip the current cell
+        if (i == 0 && j == 0) continue;
 
+        // Calculate neighbour positions with wrapping
+        int a = (xPos + i + config.nXCells) % config.nXCells;
+        int b = (yPos + j + config.nYCells) % config.nYCells;
 
-        // Coordinates of the current cell
-        if (i==xPos && j==yPos) {
-          continue;
-        }
-
-
-        // a and b now representing the neighbours Coorinates
-        a=i;
-        b=j;
-
-
-        // Check if the cell is at the edge of the field
-        // If so we must reverse the Coordinate to find it's opposite neighbour
-        // Subtract 1 because arrays start from 0
-        if (i<0) {
-          a=config.nXCells-1;
-        }
-        if (i>=config.nXCells) {
-          a=0;
-        }
-        if (j<0) {
-          b=config.nYCells-1;
-        }
-        if (j>=config.nYCells) {
-          b=0;
-        }
-       
-       // println(" " + a + " " + b + " "); 
-        
-        
-        // Saving the Coordinates in the position Array
+        // Save the coordinates in the position array
         positions[arrayPosition][0] = a;
         positions[arrayPosition][1] = b;
         arrayPosition++;
       } 
     }
-   // println();
     return positions;
   }
 
   // Method to calculate the total of living cells around the cell
   // This makes it easier in the end to apply Conways rules.
-  int neighbourTotal(Cell cells[][]) {
-    // Value to hold the total (n of living cells)
+  int neighbourTotal(Cell[][] cells) {
     int total = 0;
 
     // Looping over all coordinates in the cells neighbours array
     for (int[] coordinate : positions) {
-
-      // extracting the single Coordinates
+      // Extracting the single Coordinates
       int x = coordinate[0];
       int y = coordinate[1];
 
-      // If the cell is alive, add 1 to the total,
-
-      //println("Cell " + xPos+ " " + yPos + " Neighbours are: " + x +" "+ y);
+      // If the cell is alive, add 1 to the total
       if (cells[x][y].isAlive()) {
         total += 1;
       }
@@ -118,22 +78,18 @@ class Cell {
 // Function to fill an array with the needed amount of cells
 // Amount is defined with the given config values
 Cell[][] createCells() {
-
-
   // Create an empty 2D-Array which is going to hold all cells
   Cell[][] cells = new Cell[config.nXCells][config.nYCells];
 
-
-  for (int x=0; x<config.nXCells; x++) {
-    for (int y=0; y<config.nYCells; y++) {
-
+  for (int x = 0; x < config.nXCells; x++) {
+    for (int y = 0; y < config.nYCells; y++) {
       // Create new Cell object
       Cell c = new Cell(x, y);
 
-      // Calculate it's neighbours, this only has to be done once
+      // Calculate its neighbours, this only has to be done once
       c.calculateNeighbours();
 
-      // Filling the array
+      // Fill the array
       cells[x][y] = c;
     }
   }
@@ -142,17 +98,12 @@ Cell[][] createCells() {
 }
 
 void drawLivingCells() {
-
-  for (int x=0; x<config.nXCells; x++) {
-    for (int y=0; y<config.nYCells; y++) {
-
+  for (int x = 0; x < config.nXCells; x++) {
+    for (int y = 0; y < config.nYCells; y++) {
       // If the cell is alive, colorize it
       if (cells[x][y].isAlive()) {
-        
-        //println("Cell " + x +" "+ y + " is living (drawLivingCells function)"  );
-
         fill(0, 0, 0);
-        rect(x*config.cellWidth, y*config.cellHeight, config.cellWidth, config.cellHeight);
+        rect(x * config.cellWidth, y * config.cellHeight, config.cellWidth, config.cellHeight);
       }
     }
   }
@@ -160,37 +111,30 @@ void drawLivingCells() {
 
 // Revive n random cells
 void activateRandomCells(int n) {
-  for (int i=0; i<n; i++) {
-    println("Cell  " + i + " of " + n + " was activated");
-    //delay(1000);
-    
+  for (int i = 0; i < n; i++) {
+    println("Cell " + i + " of " + n + " was activated");
+
     // Generate coordinates of a random cell
     int x = int(random(config.nXCells));
     int y = int(random(config.nYCells));
-    
+
     // Revive it (also its corresponding partner in the holding copy array)
     cells[x][y].comesAlive();
     cellsCopy[x][y].comesAlive();
-    println("Cell is alive:");
-    println(cellsCopy[x][y].isAlive());
-    
   }
 }
 
-// After one iteration of the game this fuction applys the changes back on the original array
-void applyCellChanges(){
-
-  // Loop over all cells 
-  for (int x=0; x<config.nXCells; x++) {
-    for (int y=0; y<config.nYCells; y++) {
-
-      // Simply make them similar
-      if (cellsCopy[x][y].isAlive()){
+// After one iteration of the game this function applies the changes back on the original array
+void applyCellChanges() {
+  // Loop over all cells
+  for (int x = 0; x < config.nXCells; x++) {
+    for (int y = 0; y < config.nYCells; y++) {
+      // Simply adapt the changes
+      if (cellsCopy[x][y].isAlive()) {
         cells[x][y].comesAlive();
-
-      }else{
+      } else {
         cells[x][y].dies();
-      }    
+      }
     }
   }
 }

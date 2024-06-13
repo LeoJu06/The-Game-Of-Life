@@ -50,7 +50,7 @@ void main() {
   drawGrid();
   play();
   drawLivingCells();
-  delay(500);
+
 }
 
 void draw(){
