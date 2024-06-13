@@ -26,20 +26,14 @@ void setup() {
   activateRandomCells(config.amountCells);
 
 
-  // -----
-  // Test calls 
-  //println(cells[0][0].neighbourTotal(cells));
-  //drawLivingCells();
+
+
 
   // Calling the main function
   // Head of the programm
   // Exe
   //main();
 
-  //cells[0][0].calculateNeighbours();
-  // -----
-
-  //println("End of Programm");
 }
 
 void main() {
