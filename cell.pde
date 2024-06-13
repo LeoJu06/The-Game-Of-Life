@@ -138,3 +138,29 @@ void applyCellChanges() {
     }
   }
 }
+
+
+// function to create a glider with the top at position x y
+void createGlider(int startX, int startY) {
+  // Check if the glider fits within the boundaries of the grid
+  if (startX >= 0 && startX + 2 < config.nXCells && startY >= 0 && startY + 2 < config.nYCells) {
+    // Define the glider pattern (relative coordinates)
+    int[][] gliderPattern = {
+      {0, 1},
+      {1, 2},
+      {2, 0},
+      {2, 1},
+      {2, 2}
+    };
+
+    // Activate the cells to form the glider
+    for (int[] offset : gliderPattern) {
+      int x = startX + offset[0];
+      int y = startY + offset[1];
+      cells[x][y].comesAlive();
+      cellsCopy[x][y].comesAlive(); // Assuming cellsCopy is used to apply changes
+    }
+  } else {
+    println("The glider cannot be placed at this position.");
+  }
+}

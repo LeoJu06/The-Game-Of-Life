@@ -23,8 +23,11 @@ void setup() {
   cells = createCells();
   cellsCopy = createCells();
   
-  activateRandomCells(config.amountCells);
+  //
+  
+  //activateRandomCells(config.amountCells);
 
+ 
 
 
 
