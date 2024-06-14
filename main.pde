@@ -25,28 +25,28 @@ void setup() {
   
   activateRandomCells(config.amountCells);
 
-
-
-
-
-  // Calling the main function
-  // Head of the programm
-  // Exe
-  //main();
-
 }
 
 void main() {
 
   // Andrin will fill this up
   //show_starter_page();
-  background(255);
-  drawGrid();
-  play();
+  background(config.backgroundColor);
+  
+  if (config.showGrid){
+    drawGrid();
+  }
+  applyGameRules();
   drawLivingCells();
+  drawGenerationNumber();
 
 }
 
 void draw(){
-  main();
+  
+  if (startGame){
+    main();
+  }else{
+    showStarterPage();
+  }
 }

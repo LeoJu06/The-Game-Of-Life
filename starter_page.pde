@@ -5,14 +5,16 @@ PImage Hintergrundbild;
 PFont titelFont;
 int i = 0; // Initialisierung der Variable i
 
-int buttonWidth=200, buttonHeight=50;
+int StartButtonWidth=200, StartButtonHeight=50;
 
-int buttonX = (config.winWidth - buttonWidth) / 2;
-int buttonY = (int)(config.winHeight / 2.5);
+int StartButtonX = (config.winWidth - StartButtonWidth) / 2;
+int StartButtonY = (int)(config.winHeight / 2.5);
+
+boolean startGame = false;
 
 
 
-void show_starter_page() {
+void showStarterPage(){
     i = i + 1;
     if (i > 20) {
         i = 0; // Zurücksetzen von i auf 0 bei 20
@@ -40,24 +42,18 @@ void show_starter_page() {
     
     // Draw the button
     fill(100); // Button color
-    rect(buttonX, buttonY, buttonWidth, buttonHeight);
+    rect(StartButtonX, StartButtonY, StartButtonWidth, StartButtonHeight);
     
     fill(255); // Text color
     textSize(20);
-    text("Start Game", buttonX + buttonWidth / 2, buttonY + buttonHeight / 2 + 7); // Adjust the +7 for vertical alignment
+    text("Start Game", StartButtonX + StartButtonWidth / 2, StartButtonY + StartButtonHeight / 2 + 7); // Adjust the +7 for vertical alignment
     
   
 }
 
 void mousePressed() {
-    if (mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight) {
+    if (mouseX > StartButtonX && mouseX < StartButtonX + StartButtonWidth && mouseY > StartButtonY && mouseY < StartButtonY + StartButtonHeight) {
         // Start the game
-        startGame();
+        startGame=true;
     }
-}
-
-void startGame() {
-    // Your code to start the game goes here
-    println("Starting the game...");
-   // main();
 }

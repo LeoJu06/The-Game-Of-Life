@@ -19,6 +19,17 @@ class Config {
   int nYCells = winHeight / cellHeight;
 
   // Amount of start cells on the grid
-  int percentOfLivingCells = 25;
+  int percentOfLivingCells = 45;
   int amountCells = percentOfLivingCells * nXCells;
+  
+  // decide to draw 
+  boolean showGrid = false;
+  
+  // Set the cell color
+  color cellColor = color(249, 255, 74);
+  
+  // Set the background color
+  color backgroundColor = color(59,4,82);
+  
+  int nGeneration = 0;
 }

@@ -102,7 +102,7 @@ void drawLivingCells() {
     for (int y = 0; y < config.nYCells; y++) {
       // If the cell is alive, colorize it
       if (cells[x][y].isAlive()) {
-        fill(0, 0, 0);
+        fill(config.cellColor);
         rect(x * config.cellWidth, y * config.cellHeight, config.cellWidth, config.cellHeight);
       }
     }
@@ -112,7 +112,7 @@ void drawLivingCells() {
 // Revive n random cells
 void activateRandomCells(int n) {
   for (int i = 0; i < n; i++) {
-    println("Cell " + i + " of " + n + " was activated");
+    //intln("Cell " + i + " of " + n + " was activated");
 
     // Generate coordinates of a random cell
     int x = int(random(config.nXCells));
