@@ -1,5 +1,5 @@
 
-void play(){
+void applyGameRules(){
   
   for (int x = 0; x < config.nXCells; x++) {
     for (int y = 0; y < config.nYCells; y++) {
@@ -14,18 +14,20 @@ void play(){
         
         if ((total < 2) || (total > 3)){
           cellsCopy[x][y].dies();
-          println("Cell " + x + y + " dies");
-          
+        //println("Cell " + x + y + " dies");
+        
         } 
       }else{
         
           if (total == 3) {
             cellsCopy[x][y].comesAlive();
-            println("Cell " + x + y + " comes alive");
+            //"Cell " + x + y + " comes alive");
          }
        }
     }
   }
   
   applyCellChanges();
+  config.nGeneration+=1;
+  println(config.nGeneration);
 }
