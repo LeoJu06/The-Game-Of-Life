@@ -19,6 +19,8 @@ class Config {
   int nYCells = winHeight / cellHeight;
 
   // Amount of start cells on the grid
-  int percentOfLivingCells = 25;
+  int percentOfLivingCells = 40;
   int amountCells = percentOfLivingCells * nXCells;
+  
+  int gameSpeed = 0;
 }
