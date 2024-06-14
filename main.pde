@@ -23,27 +23,26 @@ void setup() {
   cells = createCells();
   cellsCopy = createCells();
   
+
+  
   activateRandomCells(config.amountCells);
-
-
-
-
-
-  // Calling the main function
-  // Head of the programm
-  // Exe
-  //main();
+  
+  //createGliderGun(19, 19);
+  //createGlider(69, 69);
 
 }
 
 void main() {
 
-  // Andrin will fill this up
-  //show_starter_page();
+
+ // show_starter_page();
   background(255);
   drawGrid();
   play();
   drawLivingCells();
+  
+  // Setting th game speed, wait after each iteration
+  delay(config.gameSpeed);
 
 }
 
