@@ -23,7 +23,12 @@ void setup() {
   cells = createCells();
   cellsCopy = createCells();
   
+
+  
   activateRandomCells(config.amountCells);
+  
+  //createGliderGun(19, 19);
+  //createGlider(69, 69);
 
 }
 
