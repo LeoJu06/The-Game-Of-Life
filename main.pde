@@ -27,8 +27,14 @@ void setup() {
   
   activateRandomCells(config.amountCells);
   
+  // ***      Here you can try the diferent shapes
   //createGliderGun(19, 19);
-  //createGlider(69, 69);
+  //createGlider(69, 69); 
+   //createLightweightSpaceship(50, 50);
+   //createBlinker(40, 40);
+  // createBeehive(40, 40);
+  //createPulsar(40, 40);
+   // ***
 
 }
 
@@ -44,6 +50,7 @@ void main() {
   applyGameRules();
   drawLivingCells();
   drawGenerationNumber();
+  delay(config.speed);
 
 }
 

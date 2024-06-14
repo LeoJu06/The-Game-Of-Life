@@ -19,7 +19,7 @@ class Config {
   int nYCells = winHeight / cellHeight;
 
   // Amount of start cells on the grid
-  int percentOfLivingCells = 45;
+  int percentOfLivingCells = 30;
   int amountCells = percentOfLivingCells * nXCells;
   
   // decide to draw 
@@ -31,5 +31,12 @@ class Config {
   // Set the background color
   color backgroundColor = color(59,4,82);
   
+  // set the colour for the gen counter
+  color generationColour = color(200, 0, 0);
+  
+  // Counts the number of generations
   int nGeneration = 0;
+  
+  // 500 means 500 milliseconds of freezing the game after each gen
+  int speed = 500;
 }
