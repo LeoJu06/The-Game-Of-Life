@@ -13,6 +13,7 @@ Cell[][] cellsCopy;
 
 
 
+
 void setup() {
   
    println("Start of Programm");
@@ -25,8 +26,7 @@ void setup() {
   
 
   
-  activateRandomCells(config.amountCells);
-  
+ 
   // ***      Here you can try the diferent shapes
   //createGliderGun(19, 19);
   //createGlider(69, 69); 
@@ -35,6 +35,13 @@ void setup() {
   // createBeehive(40, 40);
   //createPulsar(40, 40);
    // ***
+   
+   
+          activateRandomCells(config.amountCells);
+   
+   
+  
+
 
 }
 
@@ -50,7 +57,7 @@ void main() {
   applyGameRules();
   drawLivingCells();
   drawGenerationNumber();
-  delay(config.speed);
+  delay(config.gameSpeed);
 
 }
 
@@ -58,7 +65,13 @@ void draw(){
   
   if (startGame){
     main();
-  }else{
+  
+  }else if (showConfigPage){
+    displayConfigPage();
+  }
+  
+  
+  else{
     showStarterPage();
   }
 }

@@ -29,5 +29,5 @@ void applyGameRules(){
   
   applyCellChanges();
   config.nGeneration+=1;
-  println(config.nGeneration);
+ // println(config.nGeneration);
 }

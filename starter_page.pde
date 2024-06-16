@@ -11,6 +11,12 @@ int StartButtonX = (config.winWidth - StartButtonWidth) / 2;
 int StartButtonY = (int)(config.winHeight / 2.5);
 
 boolean startGame = false;
+boolean showConfigPage = false;
+
+
+
+GTextField numFieldGameSpeed, numPercentLiving, numGliderGrun, numGlider, numPulsar;
+
 
 
 
@@ -47,13 +53,98 @@ void showStarterPage(){
     fill(255); // Text color
     textSize(20);
     text("Start Game", StartButtonX + StartButtonWidth / 2, StartButtonY + StartButtonHeight / 2 + 7); // Adjust the +7 for vertical alignment
+     // Event-Handling für die Eingabetaste
+ 
     
+  //  text("Eingegebene Zahl: " + numField.getText(), 50, 150);
+ 
+   // print(numField.getText());
   
 }
 
 void mousePressed() {
     if (mouseX > StartButtonX && mouseX < StartButtonX + StartButtonWidth && mouseY > StartButtonY && mouseY < StartButtonY + StartButtonHeight) {
         // Start the game
-        startGame=true;
+        
+        if (showConfigPage){
+          showConfigPage = false;
+          startGame = true;
+          removeConfigTextFields();
+           setConfigValues();
+           activateRandomCells(config.amountCells);
+
+        }else{
+        showConfigPage=true;
+          placeConfigTextFields();
+      }
+      
     }
+}
+
+// displays the text 
+void displayConfigPage(){
+  
+    Hintergrundbild = loadImage("Images/RetroComputer.jpeg");
+    image(Hintergrundbild, 0, 0, config.winWidth, config.winHeight);
+  
+   textSize(16);
+ text("Set Game Speed:", 310, 160);
+
+ 
+   text("Set % Living:", 310, 180);
+    text("Set GliderGun:", 310,200);
+     text("Set Glider:", 310, 220);
+       text("Set Pulsar:", 310, 240);
+       
+      
+      
+      // Draw the button
+    fill(100); // Button color
+    rect(StartButtonX, StartButtonY, StartButtonWidth, StartButtonHeight);
+    
+    fill(255); // Text color
+    textSize(20);
+    text("Start Game", StartButtonX + StartButtonWidth / 2, StartButtonY + StartButtonHeight / 2 + 7); // Adjust the +7 for vertical alignment
+     // Event-Handling für die Eingabetaste
+  
+  
+    println("showing config setter page");
+}
+
+
+
+
+
+// This function has to be called one and just once
+// This makes sure to not overplace each textfield with anotherone
+void placeConfigTextFields(){
+     
+   numFieldGameSpeed = new GTextField(this, 385,150, 69,16);
+  
+    numPercentLiving = new GTextField(this, 385, 170, 69, 16); 
+    numGliderGrun = new GTextField(this, 385, 190, 69, 16); 
+    numGlider = new GTextField(this, 385, 210, 69, 16); 
+    numPulsar = new GTextField(this, 385, 230, 69, 16); 
+   
+   
+   
+}
+  
+  
+void setConfigValues(){
+  
+  config.gameSpeed = int(numFieldGameSpeed.getText());
+//  println(config.gameSpeed);
+
+    config.amountCells  = int(numPercentLiving.getText());
+    println(config.amountCells);
+  
+}
+ 
+void removeConfigTextFields() {
+  numFieldGameSpeed.setVisible(false);
+  numPercentLiving.setVisible(false);
+  numGliderGrun.setVisible(false);
+  numGlider.setVisible(false);
+  numPulsar.setVisible(false);
 }

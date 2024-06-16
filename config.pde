@@ -3,6 +3,8 @@
 // Config class, contains all necessary configuration values, these won't change
 // during execution.
 
+import g4p_controls.*;
+
 class Config {
 
   // Define window width and height
@@ -38,5 +40,5 @@ class Config {
   int nGeneration = 0;
   
   // 500 means 500 milliseconds of freezing the game after each gen
-  int speed = 500;
+  int gameSpeed = 500;
 }
