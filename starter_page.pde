@@ -160,8 +160,17 @@ void removeConfigTextFields() {
   numPulsar.setVisible(false);
 }
 
+<<<<<<< Updated upstream
 void drawGenerationNumber() {
   textSize(32); // Textgröße festlegen
   fill(255, 0, 0); // Textfarbe auf Rot ändern (Beispiel für eine rote Textfarbe)
   text("Generation: " + config.nGeneration, 200, 35);
+=======
+
+void drawGenerationNumber(){
+  
+  textSize(32); // Textgröße festlegen
+  fill(config.generationColour);
+  text("Gen: " + config.nGeneration,150, 30);
+>>>>>>> Stashed changes
 }
