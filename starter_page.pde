@@ -15,7 +15,7 @@ boolean showConfigPage = false;
 
 
 
-GTextField numFieldGameSpeed, numPercentLiving, numGliderGun, numGlider, numPulsar;
+GTextField numFieldGameSpeed, numPercentLiving, numGliderGun, numGlider, numPulsar, numBeehive, numBlinker;
 
 
 
@@ -72,7 +72,7 @@ void mousePressed() {
           removeConfigTextFields();
            setConfigValues();
           activateRandomCells(config.amountCells);
-          activateGliderGun();
+          activateUsersPatterns();
            
 
     
@@ -98,6 +98,8 @@ void displayConfigPage(){
     text("Set GliderGun:", 310,200);
      text("Set Glider:", 310, 220);
        text("Set Pulsar:", 310, 240);
+         text("Set Beehive:", 310, 260);
+           text("Set Blinker:", 310, 260);
        
       
       
@@ -128,7 +130,9 @@ void placeConfigTextFields(){
     numGliderGun = new GTextField(this, 385, 190, 69, 16); 
     numGlider = new GTextField(this, 385, 210, 69, 16); 
     numPulsar = new GTextField(this, 385, 230, 69, 16); 
-   
+    numBeehive = new GTextField(this, 385, 250, 69, 16);
+    numBlinker = new GTextField(this, 385, 270, 69, 16);
+
    
    
 }
@@ -144,11 +148,11 @@ void setConfigValues(){
     
     config.numGliderGun = int(numGliderGun.getText());
     
+    config.numGlider = int(numGlider.getText());
     
-  
-  
-  
-
+    
+    config.numPulsar = int(numPulsar.getText());
+    println(config.numPulsar);
 
 }
  
@@ -167,3 +171,4 @@ void drawGenerationNumber(){
   textSize(32); // Textgröße festlegen
   fill(config.generationColour);
   text("Gen: " + config.nGeneration,150, 30);
+}

@@ -45,4 +45,12 @@ class Config {
   
   
   int numGliderGun = 0;
+  
+  int numGlider = 0;
+  
+  int numPulsar = 0;
+  
+  int numBeehive = 0;
+ 
+   int numBlinker = 0;
 }
