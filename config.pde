@@ -41,4 +41,8 @@ class Config {
   
   // 500 means 500 milliseconds of freezing the game after each gen
   int gameSpeed = 500;
+  
+  
+  
+  int numGliderGun = 0;
 }

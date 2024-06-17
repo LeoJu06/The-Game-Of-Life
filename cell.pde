@@ -111,6 +111,8 @@ void drawLivingCells() {
 
 // Revive n random cells
 void activateRandomCells(int n) {
+  
+  println("Activate random cells was called");
   for (int i = 0; i < n; i++) {
     //intln("Cell " + i + " of " + n + " was activated");
 
@@ -121,6 +123,7 @@ void activateRandomCells(int n) {
     // Revive it (also its corresponding partner in the holding copy array)
     cells[x][y].comesAlive();
     cellsCopy[x][y].comesAlive();
+   // print(cellsCopy[x][y].isAlive());
   }
 }
 
@@ -268,5 +271,13 @@ void createPulsar(int startX, int startY) {
     activatePattern(pulsarPattern, startX, startY);
   } else {
     println("The pulsar cannot be placed at this position.");
+  }
+}
+
+
+void activateGliderGun(){
+  for (int i=0; i<config.numGliderGun; i++){
+    
+    createGliderGun(int(random(config.nXCells)), int(random(config.nYCells)));
   }
 }

@@ -15,7 +15,7 @@ boolean showConfigPage = false;
 
 
 
-GTextField numFieldGameSpeed, numPercentLiving, numGliderGrun, numGlider, numPulsar;
+GTextField numFieldGameSpeed, numPercentLiving, numGliderGun, numGlider, numPulsar;
 
 
 
@@ -71,8 +71,11 @@ void mousePressed() {
           startGame = true;
           removeConfigTextFields();
            setConfigValues();
-           activateRandomCells(config.amountCells);
+          activateRandomCells(config.amountCells);
+          activateGliderGun();
+           
 
+    
         }else{
         showConfigPage=true;
           placeConfigTextFields();
@@ -115,14 +118,14 @@ void displayConfigPage(){
 
 
 
-// This function has to be called one and just once
+// This function has to be called once and just once
 // This makes sure to not overplace each textfield with anotherone
 void placeConfigTextFields(){
      
    numFieldGameSpeed = new GTextField(this, 385,150, 69,16);
   
     numPercentLiving = new GTextField(this, 385, 170, 69, 16); 
-    numGliderGrun = new GTextField(this, 385, 190, 69, 16); 
+    numGliderGun = new GTextField(this, 385, 190, 69, 16); 
     numGlider = new GTextField(this, 385, 210, 69, 16); 
     numPulsar = new GTextField(this, 385, 230, 69, 16); 
    
@@ -135,16 +138,30 @@ void setConfigValues(){
   
   config.gameSpeed = int(numFieldGameSpeed.getText());
 //  println(config.gameSpeed);
-
-    config.amountCells  = int(numPercentLiving.getText());
+    // multiply to convert the number into proper percent 
+    config.amountCells  = int(numPercentLiving.getText()) * 100;
     println(config.amountCells);
+    
+    config.numGliderGun = int(numGliderGun.getText());
+    
+    
   
+  
+  
+
+
 }
  
 void removeConfigTextFields() {
   numFieldGameSpeed.setVisible(false);
   numPercentLiving.setVisible(false);
-  numGliderGrun.setVisible(false);
+  numGliderGun.setVisible(false);
   numGlider.setVisible(false);
   numPulsar.setVisible(false);
+}
+
+void drawGenerationNumber() {
+  textSize(32); // Textgröße festlegen
+  fill(255, 0, 0); // Textfarbe auf Rot ändern (Beispiel für eine rote Textfarbe)
+  text("Generation: " + config.nGeneration, 200, 35);
 }

@@ -37,7 +37,8 @@ void setup() {
    // ***
    
    
-          activateRandomCells(config.amountCells);
+                 //activateRandomCells(config.amountCells);
+
    
    
   
