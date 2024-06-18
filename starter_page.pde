@@ -99,7 +99,7 @@ void displayConfigPage(){
      text("Set Glider:", 310, 220);
        text("Set Pulsar:", 310, 240);
          text("Set Beehive:", 310, 260);
-           text("Set Blinker:", 310, 260);
+           text("Set Blinker:", 330, 260);
        
       
       
