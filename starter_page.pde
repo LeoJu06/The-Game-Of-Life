@@ -91,15 +91,15 @@ void displayConfigPage(){
     image(Hintergrundbild, 0, 0, config.winWidth, config.winHeight);
   
    textSize(16);
- text("Set Game Speed:", 310, 160);
+ text("Set Game Speed:", 308, 160);
 
  
-   text("Set % Living:", 310, 180);
-    text("Set GliderGun:", 310,200);
-     text("Set Glider:", 310, 220);
-       text("Set Pulsar:", 310, 240);
-         text("Set Beehive:", 310, 260);
-           text("Set Blinker:", 310, 280);
+   text("Set % Living:", 300, 180);
+    text("Set GliderGun:", 304,200);
+     text("Set Glider:", 290, 220);
+       text("Set Pulsar:", 290, 240);
+         text("Set Beehive:", 295, 260);
+           text("Set Blinker:", 295, 280);
        
       
       
