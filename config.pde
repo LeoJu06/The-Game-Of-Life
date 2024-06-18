@@ -6,6 +6,8 @@
 import g4p_controls.*;
 
 class Config {
+  
+  boolean firstRound = true;
 
   // Define window width and height
   int winWidth = 800;
@@ -40,7 +42,7 @@ class Config {
   int nGeneration = 0;
   
   // 500 means 500 milliseconds of freezing the game after each gen
-  int gameSpeed = 500;
+  int gameSpeed = 0;
   
   
   
@@ -53,4 +55,6 @@ class Config {
   int numBeehive = 0;
  
    int numBlinker = 0;
+   
+   int numSpaceship = 0;
 }
