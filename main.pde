@@ -55,10 +55,16 @@ void main() {
   if (config.showGrid){
     drawGrid();
   }
-  applyGameRules();
+  if(!config.firstRound){
+    applyGameRules();
+    delay(config.gameSpeed);
+  }
   drawLivingCells();
   drawGenerationNumber();
-  delay(config.gameSpeed);
+  drawBackToMenuButton();
+    
+    config.firstRound = false;
+  
 
 }
 
@@ -75,4 +81,5 @@ void draw(){
   else{
     showStarterPage();
   }
+
 }

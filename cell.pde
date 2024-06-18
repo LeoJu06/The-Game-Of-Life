@@ -48,7 +48,7 @@ class Cell {
         positions[arrayPosition][0] = a;
         positions[arrayPosition][1] = b;
         arrayPosition++;
-      } 
+      }
     }
     return positions;
   }
@@ -111,7 +111,7 @@ void drawLivingCells() {
 
 // Revive n random cells
 void activateRandomCells(int n) {
-  
+
   println("Activate random cells was called");
   for (int i = 0; i < n; i++) {
     //intln("Cell " + i + " of " + n + " was activated");
@@ -123,7 +123,7 @@ void activateRandomCells(int n) {
     // Revive it (also its corresponding partner in the holding copy array)
     cells[x][y].comesAlive();
     cellsCopy[x][y].comesAlive();
-   // print(cellsCopy[x][y].isAlive());
+    // print(cellsCopy[x][y].isAlive());
   }
 }
 
@@ -138,6 +138,19 @@ void applyCellChanges() {
       } else {
         cells[x][y].dies();
       }
+    }
+  }
+}
+
+
+void killAllCells() {
+
+  for (int x = 0; x < config.nXCells; x++) {
+    for (int y = 0; y < config.nYCells; y++) {
+
+      cells[x][y].dies();
+         cellsCopy[x][y].dies();
+      
     }
   }
 }
