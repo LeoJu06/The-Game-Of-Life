@@ -54,8 +54,8 @@ void activateUsersPatterns() {
     createBeehive(int(random(config.nXCells)), int(random(config.nYCells)));
   }
 
-  for (int i = 0; i < config.numBlinker; i++) {
-    createBlinker(int(random(config.nXCells)), int(random(config.nYCells)));
+  for (int i = 0; i < config.numAcorn; i++) {
+    createAcorn(int(random(config.nXCells)), int(random(config.nYCells)));
   }
 
   for (int i = 0; i < config.numSpaceship; i++) {
@@ -160,6 +160,17 @@ void createPulsar(int startX, int startY) {
   };
   activatePattern(pulsarPattern, startX, startY);
 }
+
+void createAcorn(int startX, int startY) {
+  int[][] acornPattern = {
+    {0, 1},
+    {1, 3}, {1, 4}, {1, 5}, {1, 6},
+    {1, 0},
+    {2, 2}
+  };
+  activatePattern(acornPattern, startX, startY);
+}
+
 
 // Generalized pattern activation with wrapping
 void activatePattern(int[][] pattern, int startX, int startY) {

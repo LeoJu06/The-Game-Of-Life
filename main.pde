@@ -11,9 +11,6 @@ Cell[][] cells;
 // Changes will first be applied at the copy of cell
 Cell[][] cellsCopy;
 
-
-
-
 void setup() {
 
   println("Start of Programm");

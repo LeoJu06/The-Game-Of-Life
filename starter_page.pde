@@ -21,7 +21,7 @@ boolean startGame = false;
 boolean showConfigPage = false;
 
 // Textfield creation using the library
-GTextField numFieldGameSpeed, numPercentLiving, numGliderGun, numGlider, numPulsar, numBeehive, numBlinker, numSpaceship;
+GTextField numFieldGameSpeed, numPercentLiving, numGliderGun, numGlider, numPulsar, numBeehive, numAcorn, numSpaceship;
 
 void showStarterPage() {
   i = i + 1;
@@ -100,7 +100,7 @@ void displayConfigPage() {
   text("Set Glider:", 290, 220);
   text("Set Pulsar:", 290, 240);
   text("Set Beehive:", 295, 260);
-  text("Set Blinker:", 295, 280);
+  text("Set Acorn:", 295, 280);
   text("Set Spaceship:", 305, 300);
 
   fill(100);
@@ -121,7 +121,7 @@ void placeConfigTextFields() {
   numGlider = new GTextField(this, 385, 210, 69, 16);
   numPulsar = new GTextField(this, 385, 230, 69, 16);
   numBeehive = new GTextField(this, 385, 250, 69, 16);
-  numBlinker = new GTextField(this, 385, 270, 69, 16);
+  numAcorn = new GTextField(this, 385, 270, 69, 16);
   numSpaceship = new GTextField(this, 385, 290, 69, 16);
 }
 
@@ -134,7 +134,7 @@ void setConfigValues() {
   config.numGlider = int(numGlider.getText());
   config.numPulsar = int(numPulsar.getText());
   config.numBeehive = int(numBeehive.getText());
-  config.numBlinker = int(numBlinker.getText());
+  config.numAcorn = int(numAcorn.getText());
   config.numSpaceship = int(numSpaceship.getText());
 }
 
@@ -145,7 +145,7 @@ void showConfigTextFields(boolean yeah) {
   numGlider.setVisible(yeah);
   numPulsar.setVisible(yeah);
   numBeehive.setVisible(yeah);
-  numBlinker.setVisible(yeah);
+  numAcorn.setVisible(yeah);
   numSpaceship.setVisible(yeah);
 }
 
