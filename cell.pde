@@ -1,6 +1,8 @@
+
 // Represents a cell on the board
 class Cell {
-
+  
+  // represents the cells x and y coordinates as its attributes
   int xPos, yPos;
 
   // Fundamentally all cells are dead in the beginning
@@ -69,8 +71,6 @@ class Cell {
         total += 1;
       }
     }
-
-    // Simply return the total
     return total;
   }
 }
@@ -93,10 +93,10 @@ Cell[][] createCells() {
       cells[x][y] = c;
     }
   }
-
   return cells;
 }
 
+// Function to draw all living cells
 void drawLivingCells() {
   for (int x = 0; x < config.nXCells; x++) {
     for (int y = 0; y < config.nYCells; y++) {
@@ -112,10 +112,8 @@ void drawLivingCells() {
 // Revive n random cells
 void activateRandomCells(int n) {
 
-  println("Activate random cells was called");
   for (int i = 0; i < n; i++) {
-    //intln("Cell " + i + " of " + n + " was activated");
-
+   
     // Generate coordinates of a random cell
     int x = int(random(config.nXCells));
     int y = int(random(config.nYCells));
@@ -123,11 +121,12 @@ void activateRandomCells(int n) {
     // Revive it (also its corresponding partner in the holding copy array)
     cells[x][y].comesAlive();
     cellsCopy[x][y].comesAlive();
-    // print(cellsCopy[x][y].isAlive());
   }
 }
 
 // After one iteration of the game this function applies the changes back on the original array
+// this has to be done to avoid buugs
+// you shouldn't change things inside an array while looping over it
 void applyCellChanges() {
   // Loop over all cells
   for (int x = 0; x < config.nXCells; x++) {
@@ -143,14 +142,15 @@ void applyCellChanges() {
 }
 
 
+// function to kill all cells
 void killAllCells() {
 
   for (int x = 0; x < config.nXCells; x++) {
     for (int y = 0; y < config.nYCells; y++) {
 
+       // kill the original cell and it's corresponding partner
       cells[x][y].dies();
-         cellsCopy[x][y].dies();
-      
+      cellsCopy[x][y].dies();   
     }
   }
 }

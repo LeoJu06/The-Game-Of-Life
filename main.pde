@@ -8,78 +8,60 @@ Config config = new Config();
 Cell[][] cells;
 
 // Global 2D-Array which contains copies of the cells
-// Changes will first be applied at the copy of cell 
+// Changes will first be applied at the copy of cell
 Cell[][] cellsCopy;
 
 
 
 
 void setup() {
-  
-   println("Start of Programm");
 
-  // fullScreen();
+  println("Start of Programm");
+
   size(800, 800);
-  
+
+  // create the cells and the copies too
   cells = createCells();
   cellsCopy = createCells();
-  
-
-  
- 
-  // ***      Here you can try the diferent shapes
-  //createGliderGun(19, 19);
-  //createGlider(69, 69); 
-   //createLightweightSpaceship(50, 50);
-   //createBlinker(40, 40);
-  // createBeehive(40, 40);
-  //createPulsar(40, 40);
-   // ***
-   
-   
-                 //activateRandomCells(config.amountCells);
-
-   
-   
-  
-
-
 }
 
+// main function to execute the programm
 void main() {
 
-  // Andrin will fill this up
-  //show_starter_page();
+  // redraw the background
   background(config.backgroundColor);
-  
-  if (config.showGrid){
+
+  // possibility to draw the grid (can be chosen by the user)
+  if (config.showGrid) {
     drawGrid();
   }
-  if(!config.firstRound){
+  // apply the game rules and wait after each gen for the next
+  // this doesn't have to be done in the first round
+  if (!config.firstRound) {
+
+    //update the cells with the given game rules
     applyGameRules();
     delay(config.gameSpeed);
+  } else {
+    // switch this to false after the first round
+    config.firstRound = false;
   }
+
+  // draw the changes on the screen
   drawLivingCells();
   drawGenerationNumber();
   drawBackToMenuButton();
-    
-    config.firstRound = false;
-  
-
 }
 
-void draw(){
-  
-  if (startGame){
+// main draw function which is needed in every pde file
+void draw() {
+
+  // simple swich logic to handle what page should be seen
+  if (startGame) {
     main();
-  
-  }else if (showConfigPage){
+  } else if (showConfigPage) {
     displayConfigPage();
-  }
-  
-  
-  else{
+  } else {
     showStarterPage();
   }
-
 }

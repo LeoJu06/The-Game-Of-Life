@@ -1,34 +1,91 @@
-// Updated applyGameRules function
+
+// Function to apply conways rules of the of life
 void applyGameRules() {
+
+  // loop over all cells
   for (int x = 0; x < config.nXCells; x++) {
     for (int y = 0; y < config.nYCells; y++) {
+
       // Calculate the total of the neighbour cells
       int total = cells[x][y].neighbourTotal(cells);
 
+      // if the cell is alive and has less than 2 or more than 3 neighbours it dies.
       if (cells[x][y].isAlive()) {
         if (total < 2 || total > 3) {
           cellsCopy[x][y].dies();
+
+          // the logic also holds the fourth rule
+          // it stays on if it has either 2 or 3 neighbours that are on
         }
+
+        //
       } else {
+        // if the cell has exactly 3 neighbours is comes alivve
         if (total == 3) {
           cellsCopy[x][y].comesAlive();
         }
       }
     }
   }
+  // after changing the copy reapply them on the original cells
   applyCellChanges();
+
+  // counting the generation number
   config.nGeneration += 1;
+}
+
+// Activate the pattern, which are demanded by the user
+void activateUsersPatterns() {
+  // loop over the config value and just call the needed creation function
+
+  for (int i = 0; i < config.numGliderGun; i++) {
+    createGliderGun(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
+
+  for (int i = 0; i < config.numGlider; i++) {
+    createGlider(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
+
+  for (int i = 0; i < config.numPulsar; i++) {
+    createPulsar(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
+
+  for (int i = 0; i < config.numBeehive; i++) {
+    createBeehive(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
+
+  for (int i = 0; i < config.numBlinker; i++) {
+    createBlinker(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
+
+  for (int i = 0; i < config.numSpaceship; i++) {
+    createSpaceship(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
 }
 
 // Utility function to wrap around the grid
 int wrap(int coord, int max) {
+  // if coord is negative, it is increased by the value of max,
+  // to bring the coordinate into the valid range.
   if (coord < 0) {
     return coord + max;
   }
+  // Otherwise, coord modulo max is taken,
+  // to ensure that it remains within the range from 0 to max-1
   return coord % max;
 }
 
-// Updated createGlider function with wrapping
+// ****
+
+// All of the following are functions to create certain elements of the game of life
+// The logic stays allways the same
+// Each function takes x and y coords as its input
+// each function holds hard coded coords, this cords have to be activated to create the element
+// the activate pattern function is called each time
+
+// ****
+
+
 void createGlider(int startX, int startY) {
   int[][] gliderPattern = {
     {0, 1},
@@ -37,43 +94,35 @@ void createGlider(int startX, int startY) {
     {2, 1},
     {2, 2}
   };
-
   activatePattern(gliderPattern, startX, startY);
 }
 
-// Updated createGliderGun function with wrapping
 void createGliderGun(int startX, int startY) {
   int[][] gliderGunPattern = {
-    {0, 24}, {1, 22}, {1, 24}, {2, 12}, {2, 13}, {2, 20}, {2, 21}, {2, 34}, {2, 35}, 
-    {3, 11}, {3, 15}, {3, 20}, {3, 21}, {3, 34}, {3, 35}, {4, 0}, {4, 1}, {4, 10}, {4, 16}, 
-    {4, 20}, {4, 21}, {5, 0}, {5, 1}, {5, 10}, {5, 14}, {5, 16}, {5, 17}, {5, 22}, {5, 24}, 
+    {0, 24}, {1, 22}, {1, 24}, {2, 12}, {2, 13}, {2, 20}, {2, 21}, {2, 34}, {2, 35},
+    {3, 11}, {3, 15}, {3, 20}, {3, 21}, {3, 34}, {3, 35}, {4, 0}, {4, 1}, {4, 10}, {4, 16},
+    {4, 20}, {4, 21}, {5, 0}, {5, 1}, {5, 10}, {5, 14}, {5, 16}, {5, 17}, {5, 22}, {5, 24},
     {6, 10}, {6, 16}, {6, 24}, {7, 11}, {7, 15}, {8, 12}, {8, 13}
   };
-
   activatePattern(gliderGunPattern, startX, startY);
 }
 
-// Updated createSpaceship function with wrapping
 void createSpaceship(int startX, int startY) {
   int[][] spaceshipPattern = {
     {0, 1}, {0, 2}, {1, 0}, {2, 0}, {3, 0}, {3, 1}, {3, 2}, {3, 3}, {2, 3}
   };
-
   activatePattern(spaceshipPattern, startX, startY);
 }
 
-// Updated createBlinker function with wrapping
 void createBlinker(int startX, int startY) {
   int[][] blinkerPattern = {
     {0, 0},
     {0, 1},
     {0, 2}
   };
-
   activatePattern(blinkerPattern, startX, startY);
 }
 
-// Updated createBlock function with wrapping
 void createBlock(int startX, int startY) {
   int[][] blockPattern = {
     {0, 0},
@@ -81,11 +130,9 @@ void createBlock(int startX, int startY) {
     {1, 0},
     {1, 1}
   };
-
   activatePattern(blockPattern, startX, startY);
 }
 
-// Updated createBeehive function with wrapping
 void createBeehive(int startX, int startY) {
   int[][] beehivePattern = {
     {0, 1},
@@ -95,11 +142,9 @@ void createBeehive(int startX, int startY) {
     {2, 1},
     {2, 2}
   };
-
   activatePattern(beehivePattern, startX, startY);
 }
 
-// Updated createPulsar function with wrapping
 void createPulsar(int startX, int startY) {
   int[][] pulsarPattern = {
     {0, 2}, {0, 3}, {0, 4}, {0, 8}, {0, 9}, {0, 10},
@@ -113,43 +158,19 @@ void createPulsar(int startX, int startY) {
     {10, 0}, {10, 5}, {10, 7}, {10, 12},
     {12, 2}, {12, 3}, {12, 4}, {12, 8}, {12, 9}, {12, 10}
   };
-
   activatePattern(pulsarPattern, startX, startY);
 }
 
 // Generalized pattern activation with wrapping
 void activatePattern(int[][] pattern, int startX, int startY) {
   for (int[] offset : pattern) {
+
+    // calculate the coordinate using wrap around logic
     int x = wrap(startX + offset[0], config.nXCells);
     int y = wrap(startY + offset[1], config.nYCells);
+
+    // activate the cell and its corresponding partner
     cells[x][y].comesAlive();
     cellsCopy[x][y].comesAlive();
-  }
-}
-
-// Activates user-defined patterns with wrapping
-void activateUsersPatterns() {
-  for (int i = 0; i < config.numGliderGun; i++) {
-    createGliderGun(int(random(config.nXCells)), int(random(config.nYCells)));
-  }
-  
-  for (int i = 0; i < config.numGlider; i++) {
-    createGlider(int(random(config.nXCells)), int(random(config.nYCells)));
-  }
-  
-  for (int i = 0; i < config.numPulsar; i++) {
-    createPulsar(int(random(config.nXCells)), int(random(config.nYCells)));
-  }
-  
-  for (int i = 0; i < config.numBeehive; i++) {
-    createBeehive(int(random(config.nXCells)), int(random(config.nYCells)));
-  }
-  
-  for (int i = 0; i < config.numBlinker; i++) {
-    createBlinker(int(random(config.nXCells)), int(random(config.nYCells)));
-  }
-  
-  for (int i = 0; i < config.numSpaceship; i++) {
-    createSpaceship(int(random(config.nXCells)), int(random(config.nYCells)));
   }
 }
