@@ -25,7 +25,7 @@ class Config {
   int amountCells = percentOfLivingCells * nXCells;
   
   // decide to draw 
-  boolean showGrid = false;
+  boolean showGrid = true;
   
   // Set the cell color
   color cellColor = color(249, 255, 74);

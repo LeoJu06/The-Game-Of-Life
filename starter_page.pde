@@ -99,7 +99,7 @@ void displayConfigPage(){
      text("Set Glider:", 310, 220);
        text("Set Pulsar:", 310, 240);
          text("Set Beehive:", 310, 260);
-           text("Set Blinker:", 310, 260);
+           text("Set Blinker:", 310, 280);
        
       
       
@@ -152,7 +152,11 @@ void setConfigValues(){
     
     
     config.numPulsar = int(numPulsar.getText());
-    println(config.numPulsar);
+    
+    config.numBeehive = int(numBeehive.getText());
+    
+    config.numBlinker = int(numBlinker.getText());
+   
 
 }
  
@@ -162,6 +166,8 @@ void removeConfigTextFields() {
   numGliderGun.setVisible(false);
   numGlider.setVisible(false);
   numPulsar.setVisible(false);
+  numBeehive.setVisible(false);
+  numBlinker.setVisible(false);
 }
 
 

@@ -179,4 +179,17 @@ void activateUsersPatterns(){
     
     createPulsar(int(random(config.nXCells)), int(random(config.nYCells)));
   }
+  
+    for (int i=0; i<config.numBeehive; i++){
+    
+    createBeehive(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
+  
+    for (int i=0; i<config.numBlinker; i++){
+    
+    createBlinker(int(random(config.nXCells)), int(random(config.nYCells)));
+  }
+  
+  
+  
 }
